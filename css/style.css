@@ -2,18 +2,20 @@ body {
   font-size: 18px;
   line-height: 1.2;
   font-family: Roboto, "Arial", sans-serif;
+  background-color: #849d8f;
 }
 
 .site-wrapper {
-  min-width: 940px;/*Откуда этот размер?*/
+  min-width: 1200px;/*Откуда этот размер?*/
   background-color: #849d8f;
   background-image: url("../img/slider-item1.png");
   background-repeat: no-repeat;
   background-position: top center;
   transition: background-image 0.5s ease, background-color 0.5s ease; /*Анимация*/
+
 }
 
-/*Загрузка изображений заранее в скурытых элементах*/
+/*Загрузка изображений заранее в скрытых элементах*/
 .site-wrapper::before,
 .site-wrapper::after {
   content: "";
@@ -31,13 +33,29 @@ body {
 /*Загрузка изображений заранее в скрытых элементах*/
 
 .container {
-  width: 900px;
+  width: 1146px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 27px;
+  border: 1px solid;/*Потом закоментировать*/
 }
 
-.main-header {
-  
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+a {
+  font-size: 16px;
+  line-height: 18px;
+  color: #ffffff;
+  text-decoration: none;
+
+}
+
+a:hover {
+  color: #323232;/*Посмотрим ещё какой цвет задать*/
+
 }
 
 .visually-hidden {
@@ -161,4 +179,172 @@ body {
 #product-2:checked ~ .site-wrapper label[for="product-2"],
 #product-3:checked ~ .site-wrapper label[for="product-3"] {
   background-color: #ffffff;
+}
+
+/*Слайдер закончился*/
+
+.main-header {
+  margin-top: 9px;
+  border: 1px solid;
+}
+
+.main-header .logo {
+  float: left;
+  margin: 0px 10px 0 0;
+  /*border: 1px solid;*/
+}
+
+.site-navigation {
+  float: left;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+}
+
+.site-navigation > li, .user-navigation > li {
+  position: relative;
+  display: inline-block;
+  white-space: nowrap;
+  margin-top: 18px;/*Отталкиваем меню от верхней границы сайта*/
+  margin-right: -5px;/*Из-за этого вываливается .user-navigation > li из контейнера примерно на 3px*/
+
+  border: 1px solid;
+}
+
+.site-navigation a {
+  display: block;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);/*Подчеркивание*/
+  /*text-decoration: underline;/*Не катит, слишком близко и прозрачности нет*/
+  margin: 9px 13px 10px 14px;/**/
+}
+
+.site-navigation .sub-navigation {
+  position: absolute;
+  top: 40px;
+  left: -8px;
+  display: none;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  width: 143px;
+  background-color: #f8f7f4;
+  border-radius: 5px;
+  box-shadow: 0px 20px 20px 0px rgba(0, 0, 0, 0.4);
+}
+
+.site-navigation .sub-navigation:before {/*Чтобы сдвинутое подменю не исчезало*/
+    content: "";
+    display: block;
+    height: 20px;
+    position: absolute;
+    top: -20px;
+    width: 100%;
+}
+
+.site-navigation > li:hover .sub-navigation {/*подменю появляется при наведении на элемент списка*/
+  display: block;
+  z-index: 100;
+}
+
+.site-navigation > li:hover > a {/*Наведение на основное меню*/
+  font-weight: bold;
+  color: #323232;
+  background-color: #f7f6f3;
+  padding: 7px 12px 6px 14px;
+  margin: 0;
+  border-radius: 14px;
+}
+
+.site-navigation .sub-navigation li {
+  display: block;
+  /*width: 128px;*//*Лишнее*/
+  padding: 0;
+  margin: 0;
+  margin-left: 6px;
+  margin-right: 9px;
+  margin-bottom: -1px;
+  /*border: 1px solid;*/
+
+}
+
+.site-navigation .sub-navigation a {
+  display: block;
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  line-height: 16px;
+  font-weight: normal;
+  color: #323232;
+  padding-top: 10px;
+  padding-left: 15px;
+  padding-bottom: 11px;
+}
+
+.site-navigation .sub-navigation a.active {
+  margin-left: -6px;
+  padding-left: 21px;
+  width: 122px;
+
+  background-color: #d07058;
+}
+
+.site-navigation .sub-navigation a:hover {
+  margin-left: -6px;
+  padding-left: 21px;
+
+  width: 122px;
+
+  background-color: #fbded7
+}
+
+.site-navigation .sub-navigation a:active {
+  margin-left: -6px;
+  padding-left: 21px;
+  width: 122px;
+
+  background-color: #f6b5a5;
+}
+
+.site-navigation .sub-navigation li:last-child a:hover {
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.site-navigation .sub-navigation li:last-child a:active {
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.site-navigation .sub-navigation p {
+  padding: 0;
+  margin: 0;
+  padding-top: 10px;
+  padding-left: 15px;
+  padding-bottom: 12px;
+  /*margin-bottom: 11px;*/
+  font-size: 14px;
+  line-height: 16px;
+  font-weight: bold;
+  border-bottom: 1px solid #d1d0ce;
+}
+
+.user-navigation {
+  float: right;
+  list-style: none;
+  margin: 0;/*чтобы не отталкиваться от site-navigation*/
+  /*margin-right: 27px;*/
+  padding: 0;
+}
+
+.user-navigation li {
+  margin-left: 10px;
+}
+
+.user-navigation li:last-child {
+  margin-right: 0px;
+}
+
+.header-contacts {
+  float: right;
 }
